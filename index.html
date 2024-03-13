@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer type="module" src="./build/script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div>
+          <button id="flag" value=""></button>
+        </div>
+        <div class="title">
+          <h1>Бесилка</h1>
+        </div>
+        <div class="stats">
+          <span></span>
+          <span></span>
+        </div>
+      </header>
+      <div class="left">
+        <img src="./images/hangman-0.svg" alt="hangman" id="hangman" />
+      </div>
+      <div class="right">
+        <ul id="word"></ul>
+        <div id="keyboard">
+          <div class="top">
+            <button value="љ">љ</button>
+            <button value="њ">њ</button>
+            <button value="е">е</button>
+            <button value="р">р</button>
+            <button value="т">т</button>
+            <button value="ѕ">ѕ</button>
+            <button value="у">у</button>
+            <button value="и">и</button>
+            <button value="о">о</button>
+            <button value="п">п</button>
+            <button value="ш">ш</button>
+            <button value="ѓ">ѓ</button>
+          </div>
+          <div class="mid">
+            <button value="а">а</button>
+            <button value="с">с</button>
+            <button value="д">д</button>
+            <button value="ф">ф</button>
+            <button value="г">г</button>
+            <button value="х">х</button>
+            <button value="ј">ј</button>
+            <button value="к">к</button>
+            <button value="л">л</button>
+            <button value="ч">ч</button>
+            <button value="ќ">ќ</button>
+            <button value="ж">ж</button>
+          </div>
+          <div class="bottom">
+            <button value="з">з</button>
+            <button value="џ">џ</button>
+            <button value="ц">ц</button>
+            <button value="в">в</button>
+            <button value="б">б</button>
+            <button value="н">н</button>
+            <button value="м">м</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "hangman-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/build/script.js",
+  "scripts": {
+    "dev": "tsc -w & lite-server",
+    "start": "lite-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^5.4.2"
+  }
+}
