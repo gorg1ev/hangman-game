@@ -1,5 +1,5 @@
 import { newGame } from './newGame.js';
-import { hangmanImg, keyboardEl } from './querySelectors.js';
+import { hangmanImg, keyboardEl } from './selectors.js';
 
 export default function playAgain(playAgainBtn: HTMLButtonElement) {
   playAgainBtn.addEventListener('click', () => {

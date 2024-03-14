@@ -1,11 +1,11 @@
-import { keyboardEl, hangmanImg } from './selectors.js';
+import { hangmanImg } from './selectors.js';
 import { replaceBlank } from './word.js';
 import { renderModal } from './modal.js';
 import { updateStats } from './stats.js';
 import playAgain from './playAgain.js';
 import { word } from './newGame.js';
 
-keyboardEl?.addEventListener('click', (e: Event) => {
+function keyboardEventFn(e: Event) {
   const btn = (e.target as HTMLElement)?.closest('button');
 
   if (btn === null) return;
@@ -39,4 +39,6 @@ keyboardEl?.addEventListener('click', (e: Event) => {
     playAgain(document.querySelector('.play-again') as HTMLButtonElement);
     updateStats('LOSE');
   }
-});
+}
+
+export { keyboardEventFn };

@@ -1,10 +1,10 @@
-import { keyboardEl, hangmanImg } from './selectors.js';
+import { hangmanImg } from './selectors.js';
 import { replaceBlank } from './word.js';
 import { renderModal } from './modal.js';
 import { updateStats } from './stats.js';
 import playAgain from './playAgain.js';
 import { word } from './newGame.js';
-keyboardEl === null || keyboardEl === void 0 ? void 0 : keyboardEl.addEventListener('click', (e) => {
+function keyboardEventFn(e) {
     var _a;
     const btn = (_a = e.target) === null || _a === void 0 ? void 0 : _a.closest('button');
     if (btn === null)
@@ -35,4 +35,5 @@ keyboardEl === null || keyboardEl === void 0 ? void 0 : keyboardEl.addEventListe
         playAgain(document.querySelector('.play-again'));
         updateStats('LOSE');
     }
-});
+}
+export { keyboardEventFn };

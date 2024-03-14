@@ -1,24 +1,10 @@
+import { getFlag } from './language.js';
+import { Language } from './types.js';
+import modalENG from './render/modalENG.js';
+import modalMKD from './render/modalMKD.js';
 export function renderModal(type, word) {
-    let modalHTML;
-    if (type) {
-        modalHTML = `<div class="modal">
-      <div class="content">
-        <img src="./images/giphy-happy.gif" alt="gif" />
-        <h4 class="win">Победа</h4>
-        <p>Точниот збор е: <b>${word}</b></p>
-        <button class="play-again" onclick="">Играј Повторно</button>
-      </div>
-    </div>`;
-    }
-    else {
-        modalHTML = `<div class="modal">
-      <div class="content">
-        <img src="./images/giphy-sad.gif" alt="gif" />
-        <h4 class="lose">Изгуби</h4>
-        <p>Точниот збор е: <b>${word}</b></p>
-        <button class="play-again">Играј Повторно</button>
-      </div>
-    </div>`;
-    }
+    let modalHTML = modalMKD(type, word);
+    if (getFlag() === Language.ENG)
+        modalHTML = modalENG(type, word);
     document.body.insertAdjacentHTML('afterbegin', modalHTML);
 }
