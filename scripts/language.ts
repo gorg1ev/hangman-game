@@ -1,19 +1,26 @@
+import render from './render.js';
 import { flagBtn } from './selectors.js';
-import { Language, LanguageFlags } from './types.js';
+import { gameState } from './state.js';
+import { renderEngUi } from './views/keyboardLanguage/ENG.js';
+import { renderMkdUi } from './views/keyboardLanguage/MKD.js';
 
-function changeFlag(): void {
-  if (flagBtn.value === Language.MKD) {
-    flagBtn.value = Language.ENG;
-    flagBtn.innerHTML = LanguageFlags.ENG;
-    return;
+const Flags = {
+  MKD: '🇲🇰',
+  ENG: '🇬🇧',
+  '': '',
+};
+
+export function renderLanguage() {
+  if (gameState.language === 'MKD') {
+    renderMkdUi();
+  } else {
+    renderEngUi();
   }
 
-  flagBtn.value = Language.MKD;
-  flagBtn.innerHTML = LanguageFlags.MKD;
+  renderFlag();
 }
 
-function getFlag(): string {
-  return flagBtn.value;
+function renderFlag() {
+  flagBtn.value = gameState.language;
+  flagBtn.innerHTML = Flags[gameState.language];
 }
-
-export { changeFlag, getFlag };

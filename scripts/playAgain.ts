@@ -1,15 +1,22 @@
-import { newGame } from './newGame.js';
-import { hangmanImg, keyboardEl } from './selectors.js';
+import render from './render.js';
+import { newGame } from './state.js';
+import { gameState } from './state.js';
+import { renderEngKeyboard } from './views/keyboardLanguage/ENG.js';
+import { renderMkdKeyboard } from './views/keyboardLanguage/MKD.js';
+import { renderMan } from './views/renderMan.js';
+import { renderWord } from './views/renderWord.js';
 
-export default function playAgain(playAgainBtn: HTMLButtonElement) {
+export default function playAgain() {
+  const playAgainBtn = document.querySelector(
+    '.play-again'
+  ) as HTMLButtonElement;
+
   playAgainBtn.addEventListener('click', () => {
-    newGame();
     document.body.removeChild(document.querySelector('.modal') as HTMLElement);
-    hangmanImg!.src = './images/hangman-0.svg';
 
-    const btns = keyboardEl.querySelectorAll('button');
-    for (const btn of btns) {
-      btn.disabled = false;
-    }
+    if (gameState.language === 'ENG') renderEngKeyboard();
+    else if (gameState.language === 'MKD') renderMkdKeyboard();
+
+    render();
   });
 }

@@ -3,17 +3,18 @@ import { renderModal } from './views/renderModal.js';
 import { renderMan } from './views/renderMan.js';
 import { gameState } from './state.js';
 import { disableButton } from './views/disableButton.js';
-function keyboardEventFn(e) {
-    var _a;
-    const btn = (_a = e.target) === null || _a === void 0 ? void 0 : _a.closest('button');
-    if (btn === null)
-        return;
+export function checkLetter(letter) {
     let found = false;
+    if (gameState.letters.indexOf(letter) >= 0 ||
+        gameState.attemps <= 0 ||
+        gameState.wordLen <= 0)
+        return;
     for (let i = 1; i < gameState.word.length - 1; i++) {
-        if (btn.value === gameState.word[i]) {
-            replaceBlank(i, btn.value);
+        if (letter === gameState.word[i]) {
+            replaceBlank(i, letter);
             found = true;
             gameState.wordLen--;
+            gameState.letters.push(letter);
         }
     }
     if (gameState.result() === 'win') {
@@ -21,6 +22,7 @@ function keyboardEventFn(e) {
     }
     if (!found) {
         gameState.attemps--;
+        gameState.letters.push(letter);
     }
     else {
         found = !found;
@@ -28,8 +30,7 @@ function keyboardEventFn(e) {
     if (gameState.result() === 'lose') {
         gameState.lose++;
     }
-    disableButton(btn);
+    disableButton(letter);
     renderMan();
     renderModal();
 }
-export { keyboardEventFn };

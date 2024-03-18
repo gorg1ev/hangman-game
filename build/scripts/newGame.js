@@ -1,12 +1,14 @@
 import { getRandomWord } from './word.js';
-let word = {
-    value: '',
-    wordLen: 0,
-    attemps: 0,
-};
-function newGame() {
-    word.value = getRandomWord();
-    word.wordLen = word.value.length - 2;
-    word.attemps = 6;
+import { gameState } from './state.js';
+import { renderStats } from './views/renderStats.js';
+import { renderWord } from './views/renderWord.js';
+export function newGame(prevState) {
+    gameState.word = getRandomWord();
+    gameState.wordLen = gameState.word.length - 2;
+    gameState.attemps = 6;
+    gameState.win = (prevState === null || prevState === void 0 ? void 0 : prevState.win) || 0;
+    gameState.lose = (prevState === null || prevState === void 0 ? void 0 : prevState.lose) || 0;
+    gameState.language = (prevState === null || prevState === void 0 ? void 0 : prevState.language) || 'MKD';
+    renderWord();
+    renderStats();
 }
-export { newGame, word };

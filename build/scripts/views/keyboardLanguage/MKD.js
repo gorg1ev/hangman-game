@@ -1,4 +1,4 @@
-import { title, keyboardEl } from '../selectors.js';
+import { title, keyboardEl } from '../../selectors.js';
 const keyboardHTML = `<div class="top">
     <button value="љ">љ</button>
     <button value="њ">њ</button>
@@ -36,7 +36,11 @@ const keyboardHTML = `<div class="top">
     <button value="н">н</button>
     <button value="м">м</button>
   </div>`;
-export default function renderMKD() {
-    title.innerHTML = 'Бесилка';
+export const mkdLetters = 'љњертѕуиопшѓасдфгхјклчќжзџцвбнм';
+export function renderMkdKeyboard() {
     keyboardEl.innerHTML = keyboardHTML;
+}
+export function renderMkdUi() {
+    title.innerHTML = 'Бесилка';
+    renderMkdKeyboard();
 }

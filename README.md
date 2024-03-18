@@ -17,6 +17,7 @@ This Hangman game project is developed as part of an internship task.
 - Display of guessed letters and progress towards the hidden word.
 - Game over message indicating whether the player won or lost.
 - Support for Macedonian and English word lists.
+- Support keyboard typing for two languages.
 
 ## Installation
 

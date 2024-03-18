@@ -1,18 +1,13 @@
-import { changeFlag, getFlag } from './language.js';
-import { newGame } from './newGame.js';
-import renderENG from './render/renderENG.js';
-import renderMKD from './render/renderMKD.js';
-import { Language } from './types.js';
+import { newGame } from './state.js';
+import { renderMan } from './views/renderMan.js';
+import { renderWord } from './views/renderWord.js';
+import { renderStats } from './views/renderStats.js';
+import { renderLanguage } from './language.js';
 
 export default function render(): void {
-  changeFlag();
+  renderLanguage();
   newGame();
-  const flag = getFlag();
-
-  if (flag === Language.ENG) {
-    renderENG();
-    return;
-  }
-
-  renderMKD();
+  renderWord();
+  renderMan();
+  renderStats();
 }

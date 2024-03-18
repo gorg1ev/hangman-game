@@ -1,29 +1,12 @@
-type Stats = {
-  win: number;
-  lose: number;
-};
+export type Languages = 'MKD' | 'ENG';
 
-type StatsUpdate = 'WIN' | 'LOSE';
-
-type WordType = {
-  value: string;
+export type GameState = {
+  word: string;
   wordLen: number;
   attemps: number;
+  win: number;
+  lose: number;
+  language: Languages;
+  letters: string[];
+  result: () => 'win' | 'lose' | undefined;
 };
-
-type LanguageType = {
-  MKD: string;
-  ENG: string;
-};
-
-const LanguageFlags: LanguageType = {
-  MKD: '🇲🇰',
-  ENG: '🇬🇧',
-};
-
-const Language: LanguageType = {
-  MKD: 'MKD',
-  ENG: 'ENG',
-};
-
-export { Stats, StatsUpdate, WordType, LanguageFlags, Language };

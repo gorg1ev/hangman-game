@@ -1,12 +1,9 @@
-import { getFlag } from './language.js';
 import wordListMKD from './wordList/wordListMKD.js';
 import wordListENG from './wordList/wordListENG.js';
-import { Language } from './types.js';
+import { gameState } from './state.js';
 
 function getWordList() {
-  const flag = getFlag();
-
-  if (flag === Language.ENG) {
+  if (gameState.language === 'ENG') {
     return wordListENG;
   }
 

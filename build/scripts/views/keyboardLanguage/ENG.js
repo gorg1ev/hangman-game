@@ -1,4 +1,4 @@
-import { title, keyboardEl } from '../selectors.js';
+import { title, keyboardEl } from '../../selectors.js';
 const keyboardHTML = `<div class="top">
     <button value="q">q</button>
     <button value="w">w</button>
@@ -31,7 +31,11 @@ const keyboardHTML = `<div class="top">
     <button value="n">n</button>
     <button value="m">m</button>
   </div>`;
-export default function renderENG() {
-    title.innerHTML = 'Hangman';
+export const engLetters = 'qwertyuiopasdfghjklzxcvbnm';
+export function renderEngKeyboard() {
     keyboardEl.innerHTML = keyboardHTML;
+}
+export function renderEngUi() {
+    title.innerHTML = 'Hangman';
+    renderEngKeyboard();
 }
