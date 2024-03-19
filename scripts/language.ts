@@ -1,26 +1,30 @@
-import render from './render.js';
-import { flagBtn } from './selectors.js';
-import { gameState } from './state.js';
-import { renderEngUi } from './views/keyboardLanguage/ENG.js';
-import { renderMkdUi } from './views/keyboardLanguage/MKD.js';
+import { Languages } from './types.js';
+import { engLetters } from './renders/keyboardLanguage/ENG.js';
+import { mkdLetters } from './renders/keyboardLanguage/MKD.js';
+import wordListENG from './wordList/wordListENG.js';
+import wordListMKD from './wordList/wordListMKD.js';
 
-const Flags = {
-  MKD: '🇲🇰',
-  ENG: '🇬🇧',
-  '': '',
-};
+function getWordList(language: Languages): string[] {
+  if (language === 'ENG') return wordListENG;
 
-export function renderLanguage() {
-  if (gameState.language === 'MKD') {
-    renderMkdUi();
-  } else {
-    renderEngUi();
-  }
-
-  renderFlag();
+  return wordListMKD as string[];
 }
 
-function renderFlag() {
-  flagBtn.value = gameState.language;
-  flagBtn.innerHTML = Flags[gameState.language];
+export function getLetters(language: Languages): string {
+  if (language === 'ENG') return engLetters;
+
+  return mkdLetters;
+}
+
+export function getRandomWord(language: Languages): string {
+  const wordList = getWordList(language);
+
+  const randomNumber = Math.round(Math.random() * wordList.length); // random num from 0 to list length
+  const word = wordList[randomNumber]; // getting random word
+
+  if (word === undefined) return '';
+
+  console.log(word);
+
+  return word;
 }

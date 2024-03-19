@@ -1,19 +1,15 @@
-import { flagBtn, keyboardEl } from './scripts/selectors.js';
-import { gameState } from './scripts/state.js';
+import { flagBtn, keyboardEl, themeBtn } from './scripts/selectors.js';
+import { gameState, changeLanguage, chageTheme } from './scripts/state.js';
 import render from './scripts/render.js';
-import { checkLetter } from './scripts/checkLetter.js';
-import { engLetters } from './scripts/views/keyboardLanguage/ENG.js';
-import { mkdLetters } from './scripts/views/keyboardLanguage/MKD.js';
+import { getLetters } from './scripts/language.js';
+import { renderTheme } from './scripts/renders/renderTheme.js';
+import { CheckValues } from './scripts/types.js';
+import { check } from './scripts/check.js';
 
 render();
 
 flagBtn?.addEventListener('click', () => {
-  if (gameState.language === 'MKD') {
-    gameState.language = 'ENG';
-  } else {
-    gameState.language = 'MKD';
-  }
-
+  changeLanguage();
   render();
 });
 
@@ -22,16 +18,35 @@ keyboardEl?.addEventListener('click', (e: Event) => {
 
   if (btn === null) return;
 
-  checkLetter(btn.value);
+  const checkValues: CheckValues = {
+    letter: btn.value,
+    letters: gameState.letters,
+    attemps: gameState.attemps,
+    language: gameState.language,
+    wordLen: gameState.wordLen,
+  };
+
+  check(checkValues);
 });
 
 document.addEventListener('keydown', (e) => {
-  let keyboard = mkdLetters;
   const letter = e.key.toLowerCase();
+  let keyboard = getLetters(gameState.language);
 
-  if (gameState.language === 'ENG') keyboard = engLetters;
+  if (keyboard.indexOf(letter) < 0) return;
 
-  if (keyboard.indexOf(letter) >= 0) {
-    checkLetter(letter);
-  }
+  const checkValues: CheckValues = {
+    letter,
+    letters: gameState.letters,
+    attemps: gameState.attemps,
+    language: gameState.language,
+    wordLen: gameState.wordLen,
+  };
+
+  check(checkValues);
+});
+
+themeBtn?.addEventListener('click', () => {
+  chageTheme();
+  renderTheme(gameState.theme);
 });

@@ -1,14 +1,15 @@
-import { getRandomWord } from './word.js';
-import { GameState } from './types';
+import { getRandomWord } from './language.js';
+import { GameState } from './types.js';
 
 export const gameState: GameState = {
   word: '',
   wordLen: 0,
   attemps: 0,
-  win: 0,
-  lose: 0,
-  language: 'MKD',
+  wins: 0,
+  loses: 0,
+  language: 'ENG',
   letters: [],
+  theme: 'light',
   result: function () {
     if (this?.wordLen === 0) return 'win';
 
@@ -16,9 +17,34 @@ export const gameState: GameState = {
   },
 };
 
-export function newGame() {
-  gameState.word = getRandomWord();
+export function newGame(): void {
+  gameState.word = getRandomWord(gameState.language);
   gameState.wordLen = gameState.word.length - 2;
   gameState.attemps = 6;
   gameState.letters = [];
+}
+
+export function changeLanguage(): void {
+  if (gameState.language === 'MKD') {
+    gameState.language = 'ENG';
+    return;
+  }
+
+  gameState.language = 'MKD';
+}
+
+export function chageTheme(): void {
+  if (gameState.theme === 'light') {
+    gameState.theme = 'dark';
+    return;
+  }
+
+  gameState.theme = 'light';
+}
+
+export function updateGameState(found: number, letter: string) {
+  if (found > 0) gameState.wordLen -= found;
+  else gameState.attemps--;
+
+  gameState.letters.push(letter);
 }

@@ -1,13 +1,15 @@
-import { newGame } from './state.js';
-import { renderMan } from './views/renderMan.js';
-import { renderWord } from './views/renderWord.js';
-import { renderStats } from './views/renderStats.js';
-import { renderLanguage } from './language.js';
+import { gameState, newGame } from './state.js';
+import { renderMan } from './renders/renderMan.js';
+import { renderWord } from './renders/renderWord.js';
+import { renderStats } from './renders/renderStats.js';
+import { renderLanguage } from './renders/renderLanguage.js';
+import { renderTheme } from './renders/renderTheme.js';
 
 export default function render(): void {
-  renderLanguage();
   newGame();
-  renderWord();
-  renderMan();
-  renderStats();
+  renderWord(gameState.word);
+  renderMan(gameState.attemps);
+  renderStats(gameState.wins, gameState.loses);
+  renderLanguage(gameState.language);
+  renderTheme(gameState.theme);
 }
