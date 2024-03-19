@@ -18,6 +18,7 @@ This Hangman game project is developed as part of an internship task.
 - Game over message indicating whether the player won or lost.
 - Support for Macedonian and English word lists.
 - Support keyboard typing for two languages.
+- Dark theme.
 
 ## Installation
 
