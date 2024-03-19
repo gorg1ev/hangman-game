@@ -4,6 +4,8 @@ Hangman is a classic word-guessing game where the player tries to guess a hidden
 
 This Hangman game project is developed as part of an internship task.
 
+[Live](https://hangman-hg.netlify.app/)
+
 ## Table of Contents
 
 - [Features](#features)
