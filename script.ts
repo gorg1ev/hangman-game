@@ -3,7 +3,6 @@ import { gameState, changeLanguage, chageTheme } from './scripts/state.js';
 import render from './scripts/render.js';
 import { getLetters } from './scripts/language.js';
 import { renderTheme } from './scripts/renders/renderTheme.js';
-import { CheckValues } from './scripts/types.js';
 import { check } from './scripts/check.js';
 
 render();
@@ -18,15 +17,7 @@ keyboardEl?.addEventListener('click', (e: Event) => {
 
   if (btn === null) return;
 
-  const checkValues: CheckValues = {
-    letter: btn.value,
-    letters: gameState.letters,
-    attemps: gameState.attemps,
-    language: gameState.language,
-    wordLen: gameState.wordLen,
-  };
-
-  check(checkValues);
+  check(btn.value);
 });
 
 document.addEventListener('keydown', (e) => {
@@ -35,15 +26,7 @@ document.addEventListener('keydown', (e) => {
 
   if (keyboard.indexOf(letter) < 0) return;
 
-  const checkValues: CheckValues = {
-    letter,
-    letters: gameState.letters,
-    attemps: gameState.attemps,
-    language: gameState.language,
-    wordLen: gameState.wordLen,
-  };
-
-  check(checkValues);
+  check(letter);
 });
 
 themeBtn?.addEventListener('click', () => {

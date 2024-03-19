@@ -14,14 +14,6 @@ export type GameState = {
   result: () => Result;
 };
 
-export type CheckValues = {
-  letter: string;
-  letters: string[];
-  attemps: number;
-  language: Languages;
-  wordLen: number;
-};
-
 export const Flags = {
   MKD: '🇲🇰',
   ENG: '🇬🇧',

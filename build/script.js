@@ -13,28 +13,14 @@ keyboardEl === null || keyboardEl === void 0 ? void 0 : keyboardEl.addEventListe
     const btn = e.target.closest('button');
     if (btn === null)
         return;
-    const checkValues = {
-        letter: btn.value,
-        letters: gameState.letters,
-        attemps: gameState.attemps,
-        language: gameState.language,
-        wordLen: gameState.wordLen,
-    };
-    check(checkValues);
+    check(btn.value);
 });
 document.addEventListener('keydown', (e) => {
     const letter = e.key.toLowerCase();
     let keyboard = getLetters(gameState.language);
     if (keyboard.indexOf(letter) < 0)
         return;
-    const checkValues = {
-        letter,
-        letters: gameState.letters,
-        attemps: gameState.attemps,
-        language: gameState.language,
-        wordLen: gameState.wordLen,
-    };
-    check(checkValues);
+    check(letter);
 });
 themeBtn === null || themeBtn === void 0 ? void 0 : themeBtn.addEventListener('click', () => {
     chageTheme();

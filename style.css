@@ -190,6 +190,7 @@ header {
   gap: 2rem;
   padding: 5rem;
   border-radius: 3rem;
+  font-size: 1.6rem;
 }
 
 .modal h4 {
