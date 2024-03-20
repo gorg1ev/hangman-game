@@ -3,9 +3,9 @@ import { disableButton } from './renders/disableButton.js';
 import { renderMan } from './renders/renderMan.js';
 import { renderModal } from './renders/renderModal.js';
 import { updateGameState } from './state.js';
-import { gameState } from './state.js';
+import { GameState } from './types.js';
 
-export function check(letter: string): void {
+export function check(letter: string, gameState: GameState): void {
   if (
     gameState.letters.indexOf(letter) >= 0 ||
     gameState.attemps <= 0 ||

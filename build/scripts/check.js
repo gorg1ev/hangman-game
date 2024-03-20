@@ -3,8 +3,7 @@ import { disableButton } from './renders/disableButton.js';
 import { renderMan } from './renders/renderMan.js';
 import { renderModal } from './renders/renderModal.js';
 import { updateGameState } from './state.js';
-import { gameState } from './state.js';
-export function check(letter) {
+export function check(letter, gameState) {
     if (gameState.letters.indexOf(letter) >= 0 ||
         gameState.attemps <= 0 ||
         gameState.wordLen <= 0)

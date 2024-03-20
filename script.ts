@@ -17,7 +17,7 @@ keyboardEl?.addEventListener('click', (e: Event) => {
 
   if (btn === null) return;
 
-  check(btn.value);
+  check(btn.value, gameState);
 });
 
 document.addEventListener('keydown', (e) => {
@@ -26,7 +26,7 @@ document.addEventListener('keydown', (e) => {
 
   if (keyboard.indexOf(letter) < 0) return;
 
-  check(letter);
+  check(letter, gameState);
 });
 
 themeBtn?.addEventListener('click', () => {
